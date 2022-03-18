@@ -10,10 +10,9 @@ import {
 
 import { FontAlias } from '@/styles/theme';
 
-type TextProps = TypographyProps &
-  ColorProps & {
-    variant?: FontAlias;
-  };
+export interface TextProps extends TypographyProps, ColorProps {
+  variant?: FontAlias;
+}
 
 const Variant = variant({
   prop: 'variant',

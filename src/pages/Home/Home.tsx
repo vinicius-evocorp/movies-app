@@ -1,7 +1,9 @@
+import { useSearchParams } from 'react-router-dom';
+
 import { Box, Container, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-import { Header } from './components/Header';
+// import { Header } from './components/Header';
 
 const StyledBackgroudnImage = styled('div')(({ theme }) => ({
   minHeight: theme.spacing(56),
@@ -19,11 +21,18 @@ const StyledBackgroudnImage = styled('div')(({ theme }) => ({
 }));
 
 export function Home() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const title = searchParams.get('title');
+
+  console.log(`searchParams: ${searchParams}`);
+  console.log(`title: ${title}`);
+
   return (
     <>
-      <Header />
-
-      <Container disableGutters maxWidth={false}>
+      Home
+      {/* <Header /> */}
+      {/* <Container disableGutters maxWidth={false}>
         <Box>
           <StyledBackgroudnImage>
             <Typography variant="h4" sx={{ fontWeight: '500' }}>
@@ -31,7 +40,7 @@ export function Home() {
             </Typography>
           </StyledBackgroudnImage>
         </Box>
-      </Container>
+      </Container> */}
     </>
   );
 }

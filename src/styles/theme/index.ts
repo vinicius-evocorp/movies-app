@@ -6,7 +6,7 @@ export type BreakpointAlias = 'sm' | 'md' | 'lg' | 'xl';
 export type FontAlias = 'biggest' | 'heading' | 'body' | 'button';
 
 export interface DefaultTheme {
-  borderRadius: string;
+  radii: string;
 
   fonts: { [key in FontAlias]: string };
   fontSizes: ThemeScale<string, FontAlias>;
@@ -34,7 +34,7 @@ export interface DefaultTheme {
 
 export const theme = {} as DefaultTheme;
 
-theme.borderRadius = '4px';
+theme.radii = '4px';
 
 theme.fonts = {
   biggest: '"Lato", sans-serif',
