@@ -1,19 +1,22 @@
-import { ReactNode, useMemo } from 'react';
+import React from 'react';
 
-import CssBaseline from '@mui/material/CssBaseline';
-import {
-  responsiveFontSizes,
-  ThemeProvider,
-  unstable_createMuiStrictModeTheme as createTheme,
-} from '@mui/material/styles';
+import { CssBaseline, StyledEngineProvider } from '@mui/material';
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 
-const fontFamilyRubik = {
+import defaultColors from '@/assets/scss/_theme-vars.module.scss';
+
+import { ColorProps } from '@/types';
+
+// * colors
+
+// * fontFamily
+const fontFamilyPoppins = {
   fontFamily: [
-    'Rubik',
-    'Roboto',
+    'Poppins',
     '-apple-system',
     'BlinkMacSystemFont',
     '"Segoe UI"',
+    'Roboto',
     '"Helvetica Neue"',
     'Arial',
     'sans-serif',
@@ -23,76 +26,50 @@ const fontFamilyRubik = {
   ].join(','),
 };
 
-type ThemeProps = {
-  children: ReactNode;
-};
+function Theme({ children }: { children: React.ReactNode }) {
+  const colors: ColorProps = defaultColors;
 
-export function Theme({ children }: ThemeProps) {
-  const theme = useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode: 'dark',
-          primary: {
-            main: '#253DC5',
-          },
-          background: {
-            default: '#030303',
-            paper: '#030303',
-          },
-        },
-        typography: {
-          ...fontFamilyRubik,
-        },
-        components: {
-          MuiCssBaseline: {
-            styleOverrides: {
-              body: {
-                scrollbarColor: '#6b6b6b #2b2b2b',
-                '&::-webkit-scrollbar, & *::-webkit-scrollbar': {
-                  backgroundColor: '#2b2b2b',
-                },
-                '&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb': {
-                  borderRadius: 8,
-                  backgroundColor: '#6b6b6b',
-                  minHeight: 24,
-                  border: '3px solid #2b2b2b',
-                },
-                '&::-webkit-scrollbar-thumb:focus, & *::-webkit-scrollbar-thumb:focus':
-                  {
-                    backgroundColor: '#959595',
-                  },
-                '&::-webkit-scrollbar-thumb:active, & *::-webkit-scrollbar-thumb:active':
-                  {
-                    backgroundColor: '#959595',
-                  },
-                '&::-webkit-scrollbar-thumb:hover, & *::-webkit-scrollbar-thumb:hover':
-                  {
-                    backgroundColor: '#959595',
-                  },
-                '&::-webkit-scrollbar-corner, & *::-webkit-scrollbar-corner': {
-                  backgroundColor: '#2b2b2b',
-                },
-              },
-            },
-          },
-          MuiAvatar: {
-            styleOverrides: {
-              root: {
-                width: '32px',
-                height: '32px',
-              },
-            },
-          },
-        },
-      }),
-    [],
-  );
+  const theme = createTheme({
+    palette: {
+      mode: 'dark',
+      primary: {
+        main: colors.primaryMain,
+      },
+      secondary: {
+        main: colors.secondaryMain,
+      },
+      background: {
+        default: colors.background,
+        paper: colors.paper,
+      },
+      text: {
+        primary: colors.textPrimary,
+        secondary: colors.textSecondary,
+      },
+      warning: {
+        main: colors.warningMain,
+      },
+      common: {
+        black: colors.black,
+        white: colors.white,
+      },
+    },
+    typography: {
+      ...fontFamilyPoppins,
+      button: {
+        textTransform: 'capitalize',
+      },
+    },
+  });
 
   return (
-    <ThemeProvider theme={responsiveFontSizes(theme)}>
-      <CssBaseline />
-      {children}
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={responsiveFontSizes(theme)}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
+
+export default Theme;

@@ -1,14 +1,20 @@
-import { ThemeProvider } from 'styled-components';
+import { ErrorBoundary } from 'react-error-boundary';
 
-import { AppRoutes } from '@/routes';
-import { GlobalStyle } from '@/styles/global';
-import { theme } from '@/styles/theme';
+import ErrorFallback from '@/components/ErrorFallback';
+import NavigationScroll from '@/components/NavigationScroll';
+import Theme from '@/components/Theme';
+import AppRoutes from '@/routes';
 
-export function App() {
+function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <AppRoutes />
-    </ThemeProvider>
+    <Theme>
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <NavigationScroll>
+          <AppRoutes />
+        </NavigationScroll>
+      </ErrorBoundary>
+    </Theme>
   );
 }
+
+export default App;

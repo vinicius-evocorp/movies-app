@@ -1,5 +1,4 @@
 {
-  "root": true,
   "env": {
     "browser": true,
     "es2021": true,
@@ -9,8 +8,7 @@
     "plugin:react/recommended",
     "airbnb",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-    "prettier"
+    "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -22,8 +20,8 @@
   },
   "plugins": [
     "react",
-    "@typescript-eslint",
     "react-hooks",
+    "@typescript-eslint",
     "prettier",
     "import-helpers"
   ],
@@ -53,12 +51,15 @@
         "groups": [
           "/^react/",
           "module",
-          "/^lodash/",
+          "/^@/assets//",
           "/^@//",
           ["parent", "sibling", "index"]
         ],
         "alphabetize": { "order": "asc", "ignoreCase": true }
       }
-    ]
+    ],
+    "camelcase": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "off"
   }
 }

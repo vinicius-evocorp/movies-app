@@ -1,0 +1,7 @@
+{
+  "validations": {
+    "required": "Este campo é obrigatório",
+    "max": "Limite máximo de {{value}} caracteres",
+    "min": "Limite mínimo de {{value}} caracteres"
+  }
+}

@@ -1,0 +1,44 @@
+// paper & background
+$paper: #41474E;
+$background: #171D22;
+
+// primary
+$primaryMain: #00479A;
+
+// secondary
+$secondaryMain: #00ADB5;
+
+// warning
+$warningMain: #E89B26;
+
+// text
+$textPrimary: #FFFFFF;
+$textSecondary: #E7EBEE;
+
+// common
+$black: #000000;
+$white: #FFFFFF;
+
+// ==============================|| JAVASCRIPT ||============================== //
+
+:export {
+  // paper & background
+  paper: $paper;
+  background: $background;
+
+  // primary
+  primaryMain: $primaryMain;
+
+  // secondary
+  secondaryMain: $secondaryMain;
+
+  // warning
+  warningMain: $warningMain;
+
+  // text
+  textPrimary: $textPrimary;
+  textSecondary: $textSecondary;
+
+  black: $black;
+  white: $white;
+}
